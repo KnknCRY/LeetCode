@@ -1,24 +1,25 @@
 package problems
 
-// 幹！Time Limit Exceeded
+// Accepted
 func LongestPalindrome(s string) string {
-	palindrome := make(map[string]string)
+	palindrome := make(map[string]interface{})
 	result := ""
 
 	for i := range s {
 		for j := i + 1; j <= len(s); j++ {
-			//如果現在切出來的substring不在map內
-			if _, exist := palindrome[s[i:j]]; !exist {
-				temp := s[i:j]
-				tempReverse := reverse(temp)
+			// 先切出此次的sub
+			sub := s[i:j]
 
-				// 如果把現在切出來的substring是回文
-				if temp == tempReverse {
-					//就把他與他的回文存進去
-					palindrome[temp] = tempReverse
+			if _, exist := palindrome[sub]; !exist {
+				// 如果頭尾一樣才要判斷是否回文
+				if string(sub[0]) == sub[len(sub)-1:] {
+					if isPalindrome(sub) {
+						palindrome[sub] = nil
 
-					if len(result) < len(temp) {
-						result = temp
+						// 取最長的sub
+						if len(result) < len(sub) {
+							result = sub
+						}
 					}
 				}
 			}
@@ -27,18 +28,37 @@ func LongestPalindrome(s string) string {
 	return result
 }
 
-func reverse(input string) string {
-	// Get Unicode code points.
-	n := 0
-	rune := make([]rune, len(input))
-	for _, r := range input {
-		rune[n] = r
-		n++
+func isPalindrome(input string) bool {
+	j := len(input) - 1
+
+	for i := 0; i < len(input); i++ {
+		if input[i] != input[j] {
+			return false
+		}
+		j--
 	}
-	rune = rune[0:n]
-	// Reverse
-	for i := 0; i < n/2; i++ {
-		rune[i], rune[n-1-i] = rune[n-1-i], rune[i]
-	}
-	return string(rune)
+	return true
 }
+
+// func longestPalindrome(s string) string {
+// 	lenS := len(s)
+
+// 	maxStr := s[:1]
+// 	for i := 0; i < lenS; i++ {
+// 		var str string
+// 		for l, r := i, i; l >= 0 && r < lenS && s[l] == s[r]; l, r = l-1, r+1 {
+//             str = s[l:r+1]
+// 		}
+//         if len(maxStr) < len(str) {
+// 			maxStr = str
+// 		}
+
+//         for l, r := i, i+1; l >= 0 && r < lenS && s[l] == s[r]; l, r = l-1, r+1 {
+//             str = s[l:r+1]
+// 		}
+// 		if len(maxStr) < len(str) {
+// 			maxStr = str
+// 		}
+// 	}
+// 	return maxStr
+// }
