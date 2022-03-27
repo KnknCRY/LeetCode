@@ -11,15 +11,12 @@ func LongestPalindrome(s string) string {
 			sub := s[i:j]
 
 			if _, exist := palindrome[sub]; !exist {
-				// 如果頭尾一樣才要判斷是否回文
-				if string(sub[0]) == sub[len(sub)-1:] {
-					if isPalindrome(sub) {
-						palindrome[sub] = nil
+				if isPalindrome(sub) {
+					palindrome[sub] = nil
 
-						// 取最長的sub
-						if len(result) < len(sub) {
-							result = sub
-						}
+					// 取最長的sub
+					if len(result) < len(sub) {
+						result = sub
 					}
 				}
 			}

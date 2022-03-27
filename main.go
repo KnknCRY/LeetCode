@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println(problems.LongestPalindrome("babad"))
+	fmt.Println(problems.IsPalindrome(121))
 }
