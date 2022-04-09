@@ -6,7 +6,7 @@ func MaxArea(height []int) int {
 	result := 0
 	j := len(height) - 1
 
-	for i := 0; i < len(height) && i != j; i++ {
+	for i := 0; i < len(height) && i != j; {
 		fmt.Println(i, j, "兩邊", height[i], height[j])
 		shorter, side := getShorterOne(height[i], height[j])
 		area := shorter * (j - i)
@@ -20,9 +20,9 @@ func MaxArea(height []int) int {
 
 		if side == "L" {
 			fmt.Println("左邊比較短，左邊往中間一步") // i++
+			i++
 		} else {
-			fmt.Println("右邊比較短，右邊往中間一步") // j--，i--(因為i等等會被++)
-			j--
+			fmt.Println("右邊比較短，右邊往中間一步") // j--
 			i--
 		}
 	}
