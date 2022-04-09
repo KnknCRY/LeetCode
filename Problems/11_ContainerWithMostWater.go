@@ -16,9 +16,8 @@ func MaxArea(height []int) int {
 		if area > result {
 			fmt.Println("更大面積出現", area)
 			result = area
-		} else {
-			fmt.Println("面積沒比較大")
 		}
+
 		if side == "L" {
 			fmt.Println("左邊比較短，左邊往中間一步") // i++
 		} else {
