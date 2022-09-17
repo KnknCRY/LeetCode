@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println(problems.LongestCommonPrefix([]string{"flofjkdsfkjlsw", "flower", "2"}))
+	fmt.Println(problems.LongestCommonPrefix([]string{"flower", "flow", "flight"}))
 }

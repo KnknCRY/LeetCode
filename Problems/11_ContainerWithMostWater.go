@@ -1,29 +1,21 @@
 package problems
 
-import "fmt"
-
 func MaxArea(height []int) int {
 	result := 0
 	j := len(height) - 1
 
 	for i := 0; i < len(height) && i != j; {
-		fmt.Println(i, j, "兩邊", height[i], height[j])
 		shorter, side := getShorterOne(height[i], height[j])
 		area := shorter * (j - i)
 
-		fmt.Println("較短的一邊", side, "數值為", shorter, "面積為", area)
-
 		if area > result {
-			fmt.Println("更大面積出現", area)
 			result = area
 		}
 
 		if side == "L" {
-			fmt.Println("左邊比較短，左邊往中間一步") // i++
 			i++
 		} else {
-			fmt.Println("右邊比較短，右邊往中間一步") // j--
-			i--
+			j--
 		}
 	}
 	return result
