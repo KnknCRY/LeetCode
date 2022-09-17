@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println(problems.MaxArea([]int{1, 8, 100, 2, 100, 4, 8, 3, 7}))
+	fmt.Println(problems.LongestCommonPrefix([]string{"flofjkdsfkjlsw", "flower", "2"}))
 }
