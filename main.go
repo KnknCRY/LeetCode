@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println(problems.LongestCommonPrefix([]string{"flower", "flow", "flight"}))
+	fmt.Println(problems.RecoverFromPreorder("1-2--3--4-5--6--7"))
 }
