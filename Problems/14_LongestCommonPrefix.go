@@ -2,6 +2,7 @@ package problems
 
 import "fmt"
 
+// Accepted
 func LongestCommonPrefix(strs []string) string {
 	shortestIdx := 0
 	shortestLength := len(strs[0])

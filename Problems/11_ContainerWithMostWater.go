@@ -1,5 +1,6 @@
 package problems
 
+// Accepted
 func MaxArea(height []int) int {
 	result := 0
 	j := len(height) - 1

@@ -21,6 +21,7 @@ type TreeNode struct {
 // 用一個map[階數]TreeNode，然後用stack存起來，如果下一個點是上n階，就要pop stack直到stack中的點可以當下一個點的爸爸
 // 後來發現，stack只要是TreeNode即可，因為"1-401--349---90--88"
 
+// Accepted
 func RecoverFromPreorder(traversal string) *TreeNode {
 	var root TreeNode
 	if traversal == "" {
