@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println(problems.RecoverFromPreorder("1-401--349---90--88"))
+	fmt.Println(problems.ThreeSum([]int{0, 0, 0, 0}))
 }
