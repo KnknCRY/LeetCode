@@ -16,9 +16,10 @@ func ThreeSum(nums []int) [][]int {
 		}
 	}
 
-	fmt.Println("res", result)
+	if len(result) == 0 {
+		return result
+	}
 
-	a := [][]int{}
 	for i := 0; i < len(result)-1; i++ {
 		for j := i + 1; j < len(result); j++ {
 			y := map[int]int{}
@@ -26,21 +27,28 @@ func ThreeSum(nums []int) [][]int {
 				y[value]++
 			}
 			for _, value := range result[j] {
-				y[value]--
+				y[value]++
 			}
 
 			fmt.Println("比對idx", i, j)
 			fmt.Println("比對val", result[i], result[j])
+			fmt.Println("y:", y)
 
-			var sum int
+			var same bool = true
 			for _, value := range y {
-				sum += value
+				if value%2 != 0 { // 如果不是偶數，代表value出現幾數次，那就一定不重複
+					same = false
+					break
+				}
 			}
-			if sum != 0 {
-				a = append(a)
+			if same {
+				fmt.Println("找到一樣，殺掉", result[j])
 				result = append(result[:j], result[j+1:]...)
+				fmt.Println("殺完後", result)
+				j--
 			}
 		}
 	}
+
 	return result
 }
