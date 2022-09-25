@@ -7,18 +7,12 @@ func RemoveDuplicatesFromSortedList(head *ListNode) *ListNode {
 	var resultHead, resultCurrent *ListNode
 	existMap := map[int]interface{}{}
 
-	// resultHead = &ListNode{Val: head.Val}
-	// resultCurrent = resultHead
 	currentNode := head
-	// existMap[head.Val] = nil
 	for {
 		if currentNode == nil {
 			break
 		} else {
-			// fmt.Println("現在跑到的點", currentNode)
 			if _, exist := existMap[currentNode.Val]; !exist {
-				// fmt.Println("新點", currentNode)
-				// fmt.Println("結果指向", resultCurrent)
 				if resultHead == nil {
 					resultHead = &ListNode{Val: currentNode.Val}
 					resultCurrent = resultHead
@@ -27,7 +21,6 @@ func RemoveDuplicatesFromSortedList(head *ListNode) *ListNode {
 					resultCurrent = resultCurrent.Next
 				}
 				existMap[currentNode.Val] = nil
-				// fmt.Println("結果指向", resultCurrent.Val)
 			}
 		}
 		currentNode = currentNode.Next
